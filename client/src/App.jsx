@@ -17,7 +17,7 @@ function App() {
   const [descriptionError, setdescriptionError] = useState('');
 
 
-  const { fetchUpdateCard, fetchGetCards, fetchAddCard, deleteUser} = useCardContext();
+  const { fetchUpdateCard, fetchGetCards, fetchAddCard, deleteUser } = useCardContext();
 
 
   const [form, setForm] = useState({
@@ -41,16 +41,16 @@ function App() {
 
   const handleSelectCard = (registration) => {
     setSelectedRegistration(registration);
-    setForm({ ...registration }); 
+    setForm({ ...registration });
   };
 
   const handleUpdateCard = async () => {
     if (selectedRegistration) {
       const updatedData = { ...form };
-      await fetchUpdateCard(selectedRegistration.id, updatedData); 
+      await fetchUpdateCard(selectedRegistration.id, updatedData);
       await fetchGetCards();
 
-      
+
 
       const updatedUsers = users.map((user) =>
         user.id === selectedRegistration.id ? { ...user, ...form } : user
@@ -60,15 +60,17 @@ function App() {
     }
   };
 
-
   const handleDeleteUser = async (id) => {
     await deleteUser(id);
     await fetchGetCards();
-    setUsers(users.filter(user => user.id !== id));
+
+    // Use spread operator to update state immutably
+    setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
   };
 
 
-/*** */
+
+  /*** */
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -128,56 +130,59 @@ function App() {
     getPost()
   }, [form])
 
-    return (
-      <div className="app">
-        <Router>
-          <Routes>
-            <Route path="/" element={
-              <>
-                <Form
-                  form={form}
-                  handleFormSubmit={handleFormSubmit}
-                  handleInputChange={handleInputChange}
-                  error={error}
-                  nameError={nameError}
-                  ageError={ageError}
-                  sexError={sexError}
-                  dateError={dateError}
-                  descriptionError={descriptionError}
-                  handleUpdateCard={handleUpdateCard} // Pasar la función para actualizar la tarjeta desde el formulario
-                />
-                <h2 className="mt-3 bg-white p-3 border border-dark border-2 rounded-2">Calendario de citas:</h2>
-                <Link to="/table">
-                  <button type="button" className="btn btn-dark my-3">
-                    Ver Citas en Table View
-                  </button>
-                </Link>
-                <section className="lista-citas border border-dark border-2">
-                  {users.map((registration) => (
-                    <Card
-                      key={`${registration.date}${registration.name}`}
-                      registration={registration}
+  return (
+    <div className="app">
+      <Router>
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Form
+                form={form}
+                handleFormSubmit={handleFormSubmit}
+                handleInputChange={handleInputChange}
+                error={error}
+                nameError={nameError}
+                ageError={ageError}
+                sexError={sexError}
+                dateError={dateError}
+                descriptionError={descriptionError}
+                handleUpdateCard={handleUpdateCard} // Pasar la función para actualizar la tarjeta desde el formulario
+              />
+              <h2 className="mt-3 bg-white p-3 border border-dark border-2 rounded-2">Calendario de citas:</h2>
+              <Link to="/table">
+                <button type="button" className="btn btn-dark my-3">
+                  Ver Citas en Table View
+                </button>
+              </Link>
+              <section className="lista-citas border border-dark border-2">
+                {users.map((registration) => (
+                  <Card
+                    key={`${registration.date}${registration.name}`}
+                    registration={registration}
 
-                      handleFormSubmit={handleFormSubmit}
-                      form={form}
-                      handleDeleteUser={handleDeleteUser}
-                      handleInputChange={handleInputChange}
-                      handleSelectCard={handleSelectCard}
+                    handleFormSubmit={handleFormSubmit}
+                    form={form}
+                    handleDeleteUser={handleDeleteUser}
+                    handleInputChange={handleInputChange}
+                    handleSelectCard={handleSelectCard}
 
-                    />
-                  ))}
-                </section>
-              </>
-            } />
-            <Route
-              path="/table"
-              element={<Table registrations={users} />}
-            />
-          </Routes>
-        </Router>
-        <Footer />
-      </div>
-    );
-  }
+                  />
+                ))}
+              </section>
+            </>
+          } />
+          <Route
+            path="/table"
+            element={<Table
+              handleDeleteUser={handleDeleteUser}
+              registrations={users}
+            />}
+          />
+        </Routes>
+      </Router>
+      <Footer />
+    </div>
+  );
+}
 
-  export default App;
+export default App;

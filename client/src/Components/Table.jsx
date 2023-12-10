@@ -62,8 +62,8 @@ Table.propTypes = {
 };
 
 Table.defaultProps = {
-    registrations: [], 
-    handleDeleteUser: () => { },  
+    registrations: [],
+    handleDeleteUser: () => { },
 };
 
 export default Table;
