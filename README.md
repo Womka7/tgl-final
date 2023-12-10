@@ -1,4 +1,4 @@
-# Reto Modulo 3 Mascotas endpoint
+# VeterinApp - Sistema de Agendamiento
 
 VeterinApp simplifica el agendamiento de citas veterinarias al permitir a los usuarios registrar información sobre sus mascotas y programar citas con facilidad. La aplicación genera automáticamente tarjetas con detalles de las citas, ofreciendo una gestión organizada. Los usuarios pueden eliminar o actualizar citas, brindando una experiencia conveniente para cuidar de sus mascotas. 
 
@@ -12,9 +12,6 @@ VeterinApp simplifica el agendamiento de citas veterinarias al permitir a los us
 * Carlos Ortiz
 
 ## API
-
-### Descripción
-Para nu---------
 
 ### Endpoints
 1. *GET /api/cards/*
