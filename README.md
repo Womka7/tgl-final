@@ -65,8 +65,6 @@ VeterinApp simplifica el agendamiento de citas veterinarias al permitir a los us
 
 ### Instalación y Uso
 Para instalar el proyecto primero 
-
-
  - Clonar Repositorio
 ```bash
 git clone https://github.com/Karinagth1/tgl-final.git
