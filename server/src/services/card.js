@@ -5,15 +5,15 @@ const pool = new Pool(config);
 
 const { models } = require('../db/sequelize')
 
-class Cardservice {
 
-  async getCards()
+
+  async function getcards()
   {
     const Cards = await models.Cards.findAll();
     return Cards
   }
 
-  async saveNewcard(name,age, sex, date, description)
+  async function saveNewcard(name,age, sex, date, description)
   {
     const cardCreated = await models.Cards.create({
       name: name,
@@ -27,7 +27,7 @@ class Cardservice {
 
   }
 
-  async updatecard(cardId, name, age, sex, date, description)
+  async function updatecard(cardId, name, age, sex, date, description)
   {
     const card = await models.Cards.findByPk(cardId)
 
@@ -46,7 +46,7 @@ class Cardservice {
     
   }
   
-  async upsertcard(cardId, name, age, sex, date, description)
+  async function upsertcard(cardId, name, age, sex, date, description)
   {
     const card = await models.Cards.findByPk(cardId)
     
@@ -64,11 +64,17 @@ class Cardservice {
     })
   }
 
-  async deletecard(cardId)
+  async function deletecard(cardId)
   {
     const prodctToDelete = await models.Cards.findByPk(cardId)
     prodctToDelete.destroy()
   }
-}
 
-module.exports = Cardservice
+
+module.exports = {
+  getcards,
+  saveNewcard,
+  updatecard,
+  upsertcard,
+  deletecard  
+}
