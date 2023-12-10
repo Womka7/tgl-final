@@ -42,16 +42,16 @@ VeterinApp simplifica el agendamiento de citas veterinarias al permitir a los us
      - id: ID del elemento a eliminar.
    - Ejemplo de uso:
     ``` bash
-     DELETE http://localhost:3000/cards/id
+     DELETE http://localhost:3000/cards/:id
     ``` 
-4. *PATCH /api/cards/:id*
+4. *PUT /api/cards/:id*
    - Descripción: Actualiza parcialmente la información de una cita específica según su ID.
    - Parámetros:
      - id: ID del elemento a actualizar.
      - parametro1: Descripción del parámetro.
    - Ejemplo de uso:
     ``` bash
-     PATCH -d "parametro1=nuevo_valor" http://tu-api.com/api/endpoint3/123
+    PUT -d "parametro1=nuevo_valor" http://localhost:3000/cards/:id
     ```
     ``` bash
     {
