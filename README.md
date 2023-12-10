@@ -51,7 +51,7 @@ VeterinApp simplifica el agendamiento de citas veterinarias al permitir a los us
      - parametro1: Descripción del parámetro.
    - Ejemplo de uso:
     ``` bash
-     PUT -d "parametro1=nuevo_valor" http://tu-api.com/api/endpoint3/123
+     PATCH -d "parametro1=nuevo_valor" http://tu-api.com/api/endpoint3/123
     ```
     ``` bash
     {
@@ -63,15 +63,17 @@ VeterinApp simplifica el agendamiento de citas veterinarias al permitir a los us
 - Se utilizó para el Frontend -React, Bootstrap y Scss
 - Se utilizó para el Backend - Node.js, Express.js Docker y postgresql 
 
-## Instalación y Uso
+### Instalación y Uso
 Para instalar el proyecto primero 
 
-```bash
-# clonar Repositorio
-git clone https://github.com/Karinagth1/tgl-final.git
-# Configurar las variables de entorno .env que contiene la sgte información para la conexión
 
-``` bash
+ - Clonar Repositorio
+```bash
+git clone https://github.com/Karinagth1/tgl-final.git
+```
+- Configurar las variables de entorno .env que contiene la sgte información para la conexión
+
+``` bash 
         PG_USER= 'topgunlab'
         PG_HOST= 'localhost'
         PG_DATABASE= 'topgunlab'
@@ -80,28 +82,35 @@ git clone https://github.com/Karinagth1/tgl-final.git
         JWT_KEY='myToken'
         API_TOKEN='myToken'
         SESSION_SECRET='myToken'
-        
-# Luego se debe instalar dependencias 
+```
+- Luego se debe instalar dependencias 
+```
 cd client
 npm i 
+```
+```
 cd server
 npm i 
-# En seguida en server se debe correr 
+```
+- En seguida en server se debe correr 
+```
 cd server
 docker compose up 
 npm run start
-# Iniciar la aplicación
+```
+- Iniciar la aplicación
+```
 cd client 
 npm run dev
-
 ```
+
 ## Nota
-- El historial del proyecto inicialmente lo trabajamos desde el repositorio que relacionamos a continuación
+ El historial del proyecto inicialmente lo trabajamos desde el repositorio que relacionamos a continuación,
 ```bash
  git https://github.com/carlospianoforte/reto3-main.git
 ```
-  ya que teniamos mayores avances, y donde se trabajaron la mayor parte de los cambios, el resultado final 
+  ya que teniamos mayores avances, y donde se trabajaron la mayor parte de los cambios, el resultado final,
 ```bash
  git https://github.com/Karinagth1/tgl-final.git
 ```
-    lo compartimos en el repo que enviamos del proyecto por correo y por ello en ese no hay mucha trazabilidad de cambios
+lo compartimos en el repo que enviamos del proyecto por correo y por ello en ese no hay mucha trazabilidad de cambios.
